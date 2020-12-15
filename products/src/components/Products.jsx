@@ -56,19 +56,21 @@ const Products = (props) => {
   console.log(select);
   return (
     <div className="container">
-      <select onChange={Select}>
-        <option value="A-Z">Alphabetically A-Z</option>
-        <option value="Z-A">Alphabetically Z-A</option>
-        <option value="low-high">Price low to high</option>
-        <option value="high-low"> Price high to low</option>
-      </select>
-
-      <input
-        type="text"
-        placeholder="search"
-        className="search"
-        onChange={searchData}
-      />
+      <div className='searchForm'>
+        {" "}
+        <input
+          type="text"
+          placeholder="search"
+          className="search"
+          onChange={searchData}
+        />
+        <select onChange={Select}>
+          <option value="A-Z">Alphabetically A-Z</option>
+          <option value="Z-A">Alphabetically Z-A</option>
+          <option value="low-high">Price low to high</option>
+          <option value="high-low"> Price high to low</option>
+        </select>
+      </div>
       <div className="infoPage">
         {props.data &&
           props.data
@@ -77,15 +79,22 @@ const Products = (props) => {
             })
             .map((product) => {
               return (
-                <div className="productInfo" >
+                <div className="productInfo">
                   <p className="productName">Name: {product.name}</p>
                   <p className="productPrice">Price: {product.price}</p>
-                <Link to='/info'> <img src={product.imgURL} alt="" className="productImage" onClick={(e) => {
-                  if (e.target.src === product.imgURL) {
-                    props.setInfo(product)
-                    
-                  }
-                }}/></Link>
+                  <Link to="/info">
+                    {" "}
+                    <img
+                      src={product.imgURL}
+                      alt=""
+                      className="productImage"
+                      onClick={(e) => {
+                        if (e.target.src === product.imgURL) {
+                          props.setInfo(product);
+                        }
+                      }}
+                    />
+                  </Link>
                 </div>
               );
             })}
