@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Products = (props) => {
   const [search, setSearch] = useState("");
@@ -79,7 +79,7 @@ const Products = (props) => {
             })
             .map((product) => {
               return (
-                <div className="productInfo">
+                <div key={product._id}className="productInfo">
                   <p className="productName">Name: {product.name}</p>
                   <p className="productPrice">Price: {product.price}</p>
                   <Link to="/info">

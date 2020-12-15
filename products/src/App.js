@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
 import axios from "axios";
 import Nav from "./components/Nav.jsx";
 import Products from "./components/Products.jsx";
@@ -15,7 +15,7 @@ function App() {
       let response = await axios.get(
         " https://products-api-01.herokuapp.com/api/products"
       );
-      console.log(response.data);
+
       setData(response.data);
     };
     getData();
@@ -23,17 +23,15 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
-        <Nav />
+      <Nav />
 
-        <Route path exact="/">
-          <Products data={data} setData={setData} setInfo={setInfo} />
-        </Route>
+      <Route exact path="/">
+        <Products data={data} setData={setData} setInfo={setInfo} />
+      </Route>
 
-        <Route path="/Info">
-          <ProductInfo info={info} />
-        </Route>
-      </Router>
+      <Route path="/Info">
+        <ProductInfo info={info} />
+      </Route>
     </div>
   );
 }
