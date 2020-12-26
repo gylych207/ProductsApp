@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const Products = (props) => {
   const [search, setSearch] = useState("");
   const [select, setSelect] = useState("");
+
   function searchData(e) {
     setSearch(e.target.value);
   }
@@ -52,8 +53,9 @@ const Products = (props) => {
         })
       );
     }
+     console.log(select);
   }
-  console.log(select);
+ 
   return (
     <div className="container">
       <div className='searchForm'>
